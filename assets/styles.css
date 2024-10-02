@@ -1,17 +1,28 @@
+.back{
+    background-color: rgb(162, 200, 233);
+}
+
 .header {
-    background-color: aqua;
+    background-color: salmon;
     display: flex;
     flex-wrap: wrap; /* Permite que los elementos se ajusten en pantallas pequeñas */
-    margin-bottom: 10px;
-    height: auto; /* Dejar que el contenido determine la altura */
-    justify-content: center;
+    height: auto;
+    justify-content: flex-start;
     align-items: center;
+    margin: 10px;
+    border-radius: 10px;
     padding: 10px;
+    border-radius: 10px;
+}
+
+.header-content {
+    display: flex;  /* Align items horizontally */
+    align-items: center;  /* Center items vertically */
 }
 
 .sm_logo {
     height: 80px; /* Tamaño fijo pero reducido para mejor ajuste */
-    margin-right: auto;
+    margin-right: 20px; /* Space between logo and text */
 }
 
 .main_title {
@@ -21,49 +32,64 @@
     font-size: 1.5em; /* Texto adaptable */
 }
 
+.text {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start; /* Align text to the left */
+    margin-left: 10px; /* Space between logo and text */
+}
+.text h3{
+    margin: 0;
+}
+
+
 /** Cinta de navegación **/
 .contenedor_navegacion {
-    background-color: aqua;
+    background-color: rgb(243, 117, 13);
     display: flex;
     justify-content: center;
     flex-wrap: wrap; /* Hacer que los botones se envuelvan si es necesario */
-    padding: 5px;
     height: auto;
+    margin: 10px;
+    border-radius: 10px;
+    padding: 10px;
+    border-radius: 10px;
 }
 
 /** Estilo general para los botones **/
 .boton {
-    background-color: chartreuse;
+    background-color: rgb(28, 233, 154);
     text-decoration: none;
     border-radius: 10px;
     font-weight: 500;
-    border: 0px solid;
     width: auto;
     padding: 10px 20px; /* Ajustar el padding para un mejor aspecto en pantallas pequeñas */
-    margin: 5px; /* Añadir margen para separar los botones */
+    margin: 10px; /* Añadir margen para separar los botones */
     font-size: 1em; /* Tamaño de texto adaptable */
+    display: flex; /* Utiliza flexbox para alinear contenido */
+    justify-content: center; /* Centra el texto horizontalmente */
+    align-items: center; /* Centra el texto verticalmente */
 }
 
 /** Boton 1 **/
-.boton.edo_1 {
-    padding-right: 5px;
-}
-
 .edo_1:hover {
     color: white;
     background-color: blueviolet;
 }
 
 /** Boton 2 (añade un estilo único si es necesario) **/
-.boton.edo_2 {
-    padding-left: 5px;
+.edo_2:hover {
+    color: white;
+    background-color: blueviolet;
 }
+
+
 
 /** Pages **/
 .Pages {
-    width: 100%;
+    width: auto;
     height: auto; /* Altura automática para que se ajuste al contenido */
-    margin-top: 10px;
+    margin: 10px;
     display: flex;
     flex-direction: column; /* Cambia a columna para mejor ajuste en pantallas pequeñas */
     justify-content: center;
@@ -73,13 +99,22 @@
 
 /** Página 1 **/
 .div_parametros, .div_grafica {
+    background-color: rgb(175, 170, 170);
     width: 100%; /* Ocupan todo el ancho en pantallas pequeñas */
-    border: 3px solid aqua;
+    border: 3px solid rgb(10, 10, 10);
     border-radius: 20px;
     padding: 10px;
-    margin-bottom: 10px; /* Separar visualmente los bloques */
+    margin: 10px; /* Separar visualmente los bloques */
     box-sizing: border-box; /* Incluir padding en el cálculo del ancho */
 }
+
+.grafica{
+    width: 100%; /* Ocupan todo el ancho en pantallas pequeñas */
+    box-sizing: border-box;
+}
+
+
+
 
 /** En pantallas grandes, se distribuyen horizontalmente **/
 @media (min-width: 768px) {
@@ -96,6 +131,10 @@
     .Pages {
         flex-direction: row; /* Mostrar en fila en pantallas grandes */
     }
+
+    .boton {
+        margin: 10px; /* Los botones ocupan todo el ancho en pantallas pequeñas */
+    }
 }
 
 .div_flex {
@@ -110,11 +149,13 @@
 }
 
 
+
 /* Ajustar el tamaño de los inputs en pantallas pequeñas */
 @media (max-width: 768px) {
     .div_flex > div {
         width: 100%; /* Cada input toma el 100% del ancho en pantallas pequeñas */
         margin-bottom: 10px;
+        text-align: center;
     }
 
     .sm_logo {
@@ -126,6 +167,7 @@
     }
 
     .boton {
-        width: 100%; /* Los botones ocupan todo el ancho en pantallas pequeñas */
+        width: 90%;
+        margin: 5px; /* Los botones ocupan todo el ancho en pantallas pequeñas */
     }
 }

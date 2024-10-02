@@ -23,7 +23,7 @@ layout = html.Div(className='Pages', children=[
 
     html.Div(className='div_parametros', children=[
 
-        html.H2('PARAMETERS'),
+        html.H2('PARAMETERS', style={'text-align': 'center'}),
 
         html.Div(className='div_flex', children=[
             html.Div([
@@ -63,14 +63,14 @@ layout = html.Div(className='Pages', children=[
     ]),
 
     html.Div(className='div_grafica', children=[
-        html.H2('GRÁFICA DE LA EDO DE 1ER ORDEN'),
-        dcc.Loading(
-            type='default',
-            children=dcc.Graph(id='figura_1')
-        )
+        html.H2('GRAPH OF THE FIRST ORDER ODE', style={'text-align': 'center'}),
+        
+        html.Div(className='grafica', children=[
+            dcc.Loading(type='default',children=dcc.Graph(id='figura_1'))
+        ])
     ])
-
 ])
+
 
 
 ###################################################################################

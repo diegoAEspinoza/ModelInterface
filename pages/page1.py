@@ -23,34 +23,43 @@ layout = html.Div(className='Pages', children=[
 
     html.Div(className='div_parametros', children=[
 
-        html.H2('PARÁMETROS'),
+        html.H2('PARAMETERS'),
 
         html.Div(className='div_flex', children=[
             html.Div([
-                html.H3('Población Inicial'),
+                html.H3('Initial Population'),
                 dcc.Input(type='number', value=10, id='pob_ini')
             ]),
             html.Div([
-                html.H3('Tiempo Inicial'),
+                html.H3('Initial Time'),
                 dcc.Input(type='number', value=0, id='time_ini')
             ]),
             html.Div([
-                html.H3('Tiempo Final'),
+                html.H3('Final Time'),
                 dcc.Input(type='number', value=60, id='time_fin')
             ]),
         ]),
+        html.Div(className='div_flex', children=[
+            html.Div([
+                html.H3('Growth Rate'),
+                dcc.Input(max=5, type='number', value=0.15, id='r'),
+            ]),
+            html.Div([
+                html.H3('Carrying Capacity'),
+                dcc.Input(type='number', value=150, id='K'),
+            ]),
+        ]),
+        html.Div(className='div_flex', children=[
+            html.Div([
+                html.H3('Vector Field'),
+                dcc.Input(type='number',value=15, id='mallado'),
+            ]),
+            html.Div([
+                html.H3('Vector Size'),
+                dcc.Input(type='number', value=1, id='size_vec')
+            ]),
+        ]),
 
-        html.H3('Tasa de Crecimiento'),
-        dcc.Input(max=5, type='number', value=0.15, id='r'),
-
-        html.H3('Capacidad de Carga'),
-        dcc.Input(type='number', value=150, id='K'),
-
-        html.H3('Malla para el Campo de Vectores'),
-        dcc.Slider(min=1, max=40, step=1, value=15, marks=None, tooltip={'placement':'bottom', 'always_visible':True}, id='mallado'),
-
-        html.H3('Tamaño del Vector'),
-        dcc.Slider(min=0.1, max=2, step=0.1, value=1, id='size_vec')
     ]),
 
     html.Div(className='div_grafica', children=[

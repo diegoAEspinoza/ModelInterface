@@ -1,82 +1,131 @@
-.header{
+.header {
     background-color: aqua;
     display: flex;
+    flex-wrap: wrap; /* Permite que los elementos se ajusten en pantallas pequeñas */
     margin-bottom: 10px;
-    height: 100px;
+    height: auto; /* Dejar que el contenido determine la altura */
     justify-content: center;
     align-items: center;
+    padding: 10px;
 }
-.sm_logo{
-    height: 90%;
+
+.sm_logo {
+    height: 80px; /* Tamaño fijo pero reducido para mejor ajuste */
     margin-right: auto;
 }
-.main_title{
+
+.main_title {
     text-align: center;
-    padding-right: 40%;
+    padding-right: 0; /* Elimina el padding derecho para mejor ajuste en pantallas pequeñas */
+    flex-grow: 1; /* Permitir que crezca el título si hay espacio */
+    font-size: 1.5em; /* Texto adaptable */
 }
 
 /** Cinta de navegación **/
-.contenedor_navegacion{
+.contenedor_navegacion {
     background-color: aqua;
     display: flex;
     justify-content: center;
+    flex-wrap: wrap; /* Hacer que los botones se envuelvan si es necesario */
     padding: 5px;
-    height: 30px;
+    height: auto;
 }
 
 /** Estilo general para los botones **/
-.boton{
+.boton {
     background-color: chartreuse;
     text-decoration: none;
     border-radius: 10px;
     font-weight: 500;
     border: 0px solid;
-    width: 90%;
+    width: auto;
+    padding: 10px 20px; /* Ajustar el padding para un mejor aspecto en pantallas pequeñas */
+    margin: 5px; /* Añadir margen para separar los botones */
+    font-size: 1em; /* Tamaño de texto adaptable */
 }
 
 /** Boton 1 **/
-.boton.edo_1{
+.boton.edo_1 {
     padding-right: 5px;
 }
-.edo_1:hover{
+
+.edo_1:hover {
     color: white;
     background-color: blueviolet;
 }
 
-/** Boton 2 **/
+/** Boton 2 (añade un estilo único si es necesario) **/
+.boton.edo_2 {
+    padding-left: 5px;
+}
 
 /** Pages **/
-.Pages{
+.Pages {
     width: 100%;
-    height: 600px;
+    height: auto; /* Altura automática para que se ajuste al contenido */
     margin-top: 10px;
     display: flex;
+    flex-direction: column; /* Cambia a columna para mejor ajuste en pantallas pequeñas */
     justify-content: center;
+    align-items: center; /* Centrar el contenido en pantallas grandes */
+    padding: 10px;
 }
 
-/** Página 1**/
-.div_parametros{
-    width: 40%;
+/** Página 1 **/
+.div_parametros, .div_grafica {
+    width: 100%; /* Ocupan todo el ancho en pantallas pequeñas */
     border: 3px solid aqua;
     border-radius: 20px;
-    padding-left: 10px;
-    padding-right: 10px;
-    padding-top: 10px;
-    padding-bottom: 10px;
-    margin-right: 5px;
+    padding: 10px;
+    margin-bottom: 10px; /* Separar visualmente los bloques */
+    box-sizing: border-box; /* Incluir padding en el cálculo del ancho */
 }
 
-.div_grafica{
-    width: 60%;
-    border: 3px solid aqua;
-    border-radius: 20px;
-    padding-left: 10px;
-    padding-right: 10px;
-    padding-top: 10px;
-    padding-bottom: 10px;
-    margin-left: 5px;
+/** En pantallas grandes, se distribuyen horizontalmente **/
+@media (min-width: 768px) {
+    .div_parametros {
+        width: 40%; /* Ajustar ancho en pantallas más grandes */
+        margin-right: 10px;
+    }
+
+    .div_grafica {
+        width: 60%; /* Ajustar ancho en pantallas más grandes */
+        margin-left: 10px;
+    }
+
+    .Pages {
+        flex-direction: row; /* Mostrar en fila en pantallas grandes */
+    }
 }
 
-.div_flex{
+.div_flex {
     display: flex;
+    flex-wrap: wrap; /* Permitir que los elementos se ajusten en pantallas pequeñas */
+    justify-content: space-between;
+}
+
+.div_flex > div {
+    flex: 1 1 45%; /* Cada elemento toma un 45% de espacio en pantallas más grandes */
+    margin: 5px; /* Espacio entre los elementos */
+}
+
+
+/* Ajustar el tamaño de los inputs en pantallas pequeñas */
+@media (max-width: 768px) {
+    .div_flex > div {
+        width: 100%; /* Cada input toma el 100% del ancho en pantallas pequeñas */
+        margin-bottom: 10px;
+    }
+
+    .sm_logo {
+        height: 50px; /* Reducir el logo en pantallas pequeñas */
+    }
+
+    .main_title {
+        font-size: 1.2em; /* Ajustar el tamaño del título en pantallas pequeñas */
+    }
+
+    .boton {
+        width: 100%; /* Los botones ocupan todo el ancho en pantallas pequeñas */
+    }
 }

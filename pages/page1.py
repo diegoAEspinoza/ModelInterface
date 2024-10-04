@@ -102,7 +102,7 @@ layout = html.Div(className='Pages', children=[
 
 def grafica_edo1(P0, t_i, t_f, r, k, mallado, size_vec, n_clicks):
     # Determine whether to show the vector field based on button clicks
-    show_vector_field = n_clicks % 2 == 1  # Odd clicks mean show the field
+    show_vector_field = (n_clicks % 2 == 1)  # Odd clicks mean show the field
 
     fig = ecuacion_logistica(k, P0, r, t_i, t_f, mallado, size_vec, show_vector_field)
     return fig

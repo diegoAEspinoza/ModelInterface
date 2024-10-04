@@ -19,19 +19,6 @@
     }
 }
 
-.div_flex {
-    display: flex;
-    flex-wrap: wrap; /* Permitir que los elementos se ajusten en pantallas pequeñas */
-    justify-content: space-between;
-}
-
-.div_flex > div {
-    flex: 1 1 45%; /* Cada elemento toma un 45% de espacio en pantallas más grandes */
-    margin: 5px; /* Espacio entre los elementos */
-}
-
-
-
 /* Ajustar el tamaño de los inputs en pantallas pequeñas */
 @media (max-width: 768px) {
     .div_flex > div {

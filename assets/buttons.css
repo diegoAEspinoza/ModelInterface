@@ -1,0 +1,91 @@
+/** Cinta de navegación **/
+.contenedor_navegacion {
+    background-color: rgb(243, 117, 13);
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap; /* Hacer que los botones se envuelvan si es necesario */
+    height: auto;
+    margin: 10px;
+    border-radius: 10px;
+    padding: 10px;
+    border-radius: 10px;
+}
+
+/** Estilo general para los botones **/
+.boton {
+    background-color: rgb(28, 233, 154); /* Color de fondo */
+    text-decoration: none; /* Elimina el subrayado */
+    border-radius: 10px; /* Bordes redondeados */
+    font-weight: 500; /* Peso de la fuente */
+    width: auto; /* Ancho automático */
+    padding: 12px 24px; /* Ajustar padding para mayor comodidad */
+    margin: 10px; /* Separar botones */
+    font-size: 1em; /* Tamaño de texto adaptable */
+    display: flex; /* Usar flexbox para centrar contenido */
+    justify-content: center; /* Centra el texto horizontalmente */
+    align-items: center; /* Centra el texto verticalmente */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Sombra para darle profundidad */
+    transition: background-color 0.3s, transform 0.2s; /* Transición suave */
+}
+
+/** Boton 1 **/
+.edo_1:hover {
+    color: white; /* Cambiar color del texto al pasar el mouse */
+    background-color: blueviolet; /* Cambiar color de fondo al pasar el mouse */
+    transform: scale(1.05); /* Aumentar ligeramente el tamaño al pasar el mouse */
+}
+
+/** Boton 2 **/
+.edo_2:hover {
+    color: white; /* Cambiar color del texto al pasar el mouse */
+    background-color: blueviolet; /* Cambiar color de fondo al pasar el mouse */
+    transform: scale(1.05); /* Aumentar ligeramente el tamaño al pasar el mouse */
+}
+
+/** Opciones adicionales para botones deshabilitados **/
+.boton:disabled {
+    background-color: gray; /* Color de fondo cuando está deshabilitado */
+    cursor: not-allowed; /* Cambiar cursor para indicar que está deshabilitado */
+    opacity: 0.6; /* Opacidad reducida para indicar inactividad */
+}
+
+.boton:focus {
+    outline: 3px solid blue; /* Outline for focused buttons */
+    outline-offset: 2px; /* Space between outline and button */
+}
+
+/** Estilo específico para el botón de alternar el campo de vectores **/
+.toggle-button {
+    background-color: rgb(50, 150, 250); /* Color de fondo */
+    color: white; /* Color del texto */
+    text-decoration: none; /* Elimina el subrayado */
+    border-radius: 10px; /* Bordes redondeados */
+    font-weight: 600; /* Peso de la fuente */
+    width: auto; /* Ancho automático */
+    padding: 12px 24px; /* Ajustar padding para mayor comodidad */
+    margin: 10px; /* Separar botones */
+    font-size: 1em; /* Tamaño de texto adaptable */
+    display: flex; /* Usar flexbox para centrar contenido */
+    justify-content: center; /* Centra el texto horizontalmente */
+    align-items: center; /* Centra el texto verticalmente */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Sombra para darle profundidad */
+    transition: background-color 0.3s, transform 0.2s; /* Transición suave */
+}
+
+/** Efecto hover para el botón de alternar **/
+.toggle-button:hover {
+    background-color: rgb(30, 120, 200); /* Color de fondo al pasar el mouse */
+    transform: scale(1.05); /* Aumentar ligeramente el tamaño al pasar el mouse */
+}
+
+/** Efecto al hacer clic en el botón de alternar **/
+.toggle-button:active {
+    transform: scale(0.95); /* Reducir el tamaño al hacer clic */
+}
+
+/** Opciones adicionales para botones deshabilitados **/
+.toggle-button:disabled {
+    background-color: gray; /* Color de fondo cuando está deshabilitado */
+    cursor: not-allowed; /* Cambiar cursor para indicar que está deshabilitado */
+    opacity: 0.6; /* Opacidad reducida para indicar inactividad */
+}

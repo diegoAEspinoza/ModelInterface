@@ -30,6 +30,9 @@ layout = html.Div(className='Pages', children=[
                 html.H3('Initial Population'),
                 dcc.Input(type='number', value=10, id='pob_ini')
             ]),
+        ]),
+
+        html.Div(className='div_flex', children=[
             html.Div([
                 html.H3('Initial Time'),
                 dcc.Input(type='number', value=0, id='time_ini')
@@ -39,6 +42,7 @@ layout = html.Div(className='Pages', children=[
                 dcc.Input(type='number', value=60, id='time_fin')
             ]),
         ]),
+
         html.Div(className='div_flex', children=[
             html.Div([
                 html.H3('Growth Rate'),
@@ -49,14 +53,21 @@ layout = html.Div(className='Pages', children=[
                 dcc.Input(type='number', value=150, id='K'),
             ]),
         ]),
+
         html.Div(className='div_flex', children=[
             html.Div([
                 html.H3('Vector Field'),
-                dcc.Input(type='number',value=15, id='mallado'),
+                dcc.Input(type='number', value=15, id='mallado'),
             ]),
             html.Div([
                 html.H3('Vector Size'),
                 dcc.Input(type='number', value=1, id='size_vec')
+            ]),
+        ]),
+
+        html.Div(className='div_button', children=[
+            html.Div([
+                html.Button('Toggle Vector Field', id='toggle-button', n_clicks=0, className='toggle-button')
             ]),
         ]),
 
@@ -66,12 +77,10 @@ layout = html.Div(className='Pages', children=[
         html.H2('GRAPH OF THE FIRST ORDER ODE', style={'text-align': 'center'}),
         
         html.Div(className='grafica', children=[
-            dcc.Loading(type='default',children=dcc.Graph(id='figura_1'))
+            dcc.Loading(type='default', children=dcc.Graph(id='figura_1'))
         ])
     ])
 ])
-
-
 
 ###################################################################################
 #
@@ -88,8 +97,12 @@ layout = html.Div(className='Pages', children=[
     Input('K', 'value'),
     Input('mallado', 'value'),
     Input('size_vec', 'value'),
+    Input('toggle-button', 'n_clicks')  # Input for the button
 )
 
-def grafica_edo1(P0, t_i, t_f, r, k, mallado, size_vec):
-    fig = ecuacion_logistica(k, P0, r, t_i, t_f, mallado, size_vec)
+def grafica_edo1(P0, t_i, t_f, r, k, mallado, size_vec, n_clicks):
+    # Determine whether to show the vector field based on button clicks
+    show_vector_field = n_clicks % 2 == 1  # Odd clicks mean show the field
+
+    fig = ecuacion_logistica(k, P0, r, t_i, t_f, mallado, size_vec, show_vector_field)
     return fig

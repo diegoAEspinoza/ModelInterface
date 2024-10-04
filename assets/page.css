@@ -1,0 +1,22 @@
+/** Pages **/
+.Pages {
+    width: auto;
+    height: auto; /* Altura automática para que se ajuste al contenido */
+    margin: 10px;
+    display: flex;
+    flex-direction: column; /* Cambia a columna para mejor ajuste en pantallas pequeñas */
+    justify-content: center;
+    align-items: center; /* Centrar el contenido en pantallas grandes */
+    padding: 10px;
+}
+
+/** Página 1 **/
+.div_parametros, .div_grafica {
+    background-color: rgb(175, 170, 170);
+    width: 100%; /* Ocupan todo el ancho en pantallas pequeñas */
+    border: 3px solid rgb(10, 10, 10);
+    border-radius: 20px;
+    padding: 10px;
+    margin: 10px; /* Separar visualmente los bloques */
+    box-sizing: border-box; /* Incluir padding en el cálculo del ancho */
+}

@@ -1,0 +1,62 @@
+.back{
+    background-color: rgb(162, 200, 233);
+}
+
+.header {
+    background-color: salmon;
+    display: flex;
+    flex-wrap: wrap; /* Permite que los elementos se ajusten en pantallas pequeñas */
+    height: auto;
+    justify-content: flex-start;
+    align-items: center;
+    margin: 10px;
+    border-radius: 10px;
+    padding: 10px;
+    border-radius: 10px;
+}
+
+.header-content {
+    display: flex;  /* Align items horizontally */
+    align-items: center;  /* Center items vertically */
+}
+
+.sm_logo {
+    height: 80px; /* Tamaño fijo pero reducido para mejor ajuste */
+    margin-right: 20px; /* Space between logo and text */
+}
+
+.main_title {
+    text-align: center;
+    padding-right: 0; /* Elimina el padding derecho para mejor ajuste en pantallas pequeñas */
+    flex-grow: 1; /* Permitir que crezca el título si hay espacio */
+    font-size: 1.5em; /* Texto adaptable */
+}
+
+.text {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start; /* Align text to the left */
+    margin-left: 10px; /* Space between logo and text */
+}
+.text h3{
+    margin: 0;
+}
+
+.div_flex {
+    display: flex;
+    flex-wrap: wrap; /* Permitir que los elementos se ajusten en pantallas pequeñas */
+    justify-content: space-between;
+}
+
+.div_flex > div {
+    flex: 1 1 45%; /* Cada elemento toma un 45% de espacio en pantallas más grandes */
+    margin: 5px; /* Espacio entre los elementos */
+}
+
+.div_button {
+    display: flex;
+    justify-content: center; /* Centra horizontalmente el contenido */
+    align-items: center; /* Centra verticalmente el contenido */
+    width: 100%; /* Asegura que el contenedor tome el 100% del ancho disponible */
+    margin: 20px 0; /* Añade espacio arriba y abajo del botón */
+}

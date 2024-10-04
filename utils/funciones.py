@@ -104,5 +104,4 @@ def ecuacion_logistica(K:float, P0:float, r:float, t0:float, t:float, cant:float
 
 # Funcion Logistica Alumnos
 # 1. Averguar aguna Ecuacion de algun modelo y desarrollarlo con Sympy.
-# 2. Mejorar la apariencia visual de la pagina.
 # 3. Agregar un botón en la cual me permita activar y desactivar el campo de vectores (RETO)

@@ -1,7 +1,11 @@
-**Nombre**: Espinoza Huaman, Diego Alexhander  
+**Nombre**: Espinoza Huaman, Diego Alexhander
 **Código**: 22140106
 
 # IMPORTANTE
+
+**El proyecto se hizo en Fedora40 (linux), asi que el entorno virtual es diferente.**
+
+**Se recomienda crear su propio entorno virtual si es otro sistema operativo**
 
 ## Librerías Usadas
 

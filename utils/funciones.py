@@ -159,7 +159,7 @@ def lotka_volterra_model(X0, Y0, alpha, beta, delta, gamma, t):
     # Update layout
     fig.update_layout(
         title={
-            'text': 'Lotka-Volterra Model with Vector Fields',
+            'text': 'Lotka-Volterra Model',
             'x': 0.5,
             'y': 0.92,
             'xanchor': 'center'

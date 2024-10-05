@@ -58,7 +58,7 @@ layout = html.Div(className='Pages', children=[
         html.Div(className='div_flex', children=[
             html.Div([
                 html.H3('Time'),
-                dcc.Input(type='number', value=5, id='time', step=0.1, min=0)  
+                dcc.Input(type='number', value=5, id='time', step=1, min=0)  
             ]),
         ]),
     ]),

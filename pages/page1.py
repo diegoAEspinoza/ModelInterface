@@ -67,7 +67,7 @@ layout = html.Div(className='Pages', children=[
 
         html.Div(className='div_button', children=[
             html.Div([
-                html.Button('Toggle Vector Field', id='toggle-button', n_clicks=0, className='toggle-button')
+                html.Button('Vector Field', id='toggle-button', n_clicks=0, className='toggle-button')
             ]),
         ]),
 

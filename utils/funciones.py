@@ -112,7 +112,7 @@ def ecuacion_logistica(K: float, P0: float, r: float, t0: float, t: float, cant:
 # 1. Averguar aguna Ecuacion de algun modelo y desarrollarlo con Sympy.
 # 3. Agregar un botón en la cual me permita activar y desactivar el campo de vectores (RETO)
 
-def lotka_volterra_model(X0, Y0, alpha, beta, delta, gamma, t, show_vector_field=True):
+def lotka_volterra_model(X0, Y0, alpha, beta, delta, gamma, t):
     """
     Returns a plot of the Lotka-Volterra predator-prey model with its vector field.
 
@@ -125,7 +125,8 @@ def lotka_volterra_model(X0, Y0, alpha, beta, delta, gamma, t, show_vector_field
     - X0: Initial population of prey.
     - Y0: Initial population of predators.
     - t: Time points for which the solution is computed.
-    - show_vector_field: Boolean to show the vector field.
+    - show_vector_field_prey: Boolean to show the vector field for prey.
+    - show_vector_field_pred: Boolean to show the vector field for predators.
 
     Returns:
     -------
@@ -154,37 +155,11 @@ def lotka_volterra_model(X0, Y0, alpha, beta, delta, gamma, t, show_vector_field
     # Add the predator population trace
     fig.add_trace(go.Scatter(x=time_points, y=Y, mode='lines', name='Predator (Y)', line=dict(color='red')))
 
-    if show_vector_field:
-        # Create a grid for vector field
-        X_range = np.linspace(0, t, 20)
-        Y_range = np.linspace(0, max([X0,Y0]), 20)
-        X_mesh, Y_mesh = np.meshgrid(X_range, Y_range)
-
-        # Calculate the derivatives for the vector field
-        dXdt_mesh = alpha * X_mesh - beta * X_mesh * Y_mesh
-        dYdt_mesh = delta * X_mesh * Y_mesh - gamma * Y_mesh
-
-        # Create the vector field with Plotly
-        fig.add_trace(go.Scatter(
-            x=X_mesh.flatten(),
-            y=Y_mesh.flatten(),
-            mode='lines',
-            line=dict(color='red', dash='dash'),  # No markers shown
-            name='Vector Field'
-        ))
-
-        # Add arrows for the vector field
-        fig.add_traces(ff.create_quiver(
-            X_mesh, Y_mesh, dXdt_mesh, dYdt_mesh,
-            scale=0.1,
-            line=dict(color='gray', width=1),
-            showlegend=False
-        ).data)
 
     # Update layout
     fig.update_layout(
         title={
-            'text': 'Lotka-Volterra Model with Vector Field',
+            'text': 'Lotka-Volterra Model with Vector Fields',
             'x': 0.5,
             'y': 0.92,
             'xanchor': 'center'
@@ -195,6 +170,22 @@ def lotka_volterra_model(X0, Y0, alpha, beta, delta, gamma, t, show_vector_field
         template='plotly_white',
         margin=dict(l=10, r=10, t=90, b=0),
         legend=dict(orientation='h', y=1.1)
+    )
+
+    # Contorno a la grafica
+    fig.update_xaxes(
+        mirror=True,
+        showline=True,
+        linecolor='green',
+        gridcolor='gray',
+        showgrid=True
+    )
+    fig.update_yaxes(
+        mirror=True,
+        showline=True,
+        linecolor='green',
+        gridcolor='gray',
+        showgrid=True
     )
 
     return fig

@@ -5,7 +5,7 @@
 ###################################################################################
 import dash
 from dash import dcc, html, Input, Output, callback
-from utils import ecuacion_logistica
+from utils import *
 
 dash.register_page(
     __name__,

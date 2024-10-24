@@ -9,7 +9,7 @@ from utils import *
 
 dash.register_page(
     __name__,
-    path='/Edo2doOrden',
+    path='/lotka_volterra_model',
     name='Edo-Ejemplo 2'
 )
 

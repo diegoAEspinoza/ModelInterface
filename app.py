@@ -22,8 +22,9 @@ app.layout = html.Div(className='back',children=[
     ]),
     
     html.Div(className='contenedor_navegacion', children=[
-        dcc.Link(html.Button('Edo 1er Orden', className='boton edo_1'), href='/'),
-        dcc.Link(html.Button('Edo 2do Orden', className='boton edo_2'), href='/Edo2doOrden')
+        dcc.Link(html.Button('Logistic Function', className='boton edo_1'), href='/'),
+        dcc.Link(html.Button('Lotka-Volterra Model', className='boton edo_2'), href='/lotka_volterra_model'),
+        dcc.Link(html.Button('SIR Model', className='boton edo_3'), href='/SIR'),
     ]),
     
     dash.page_container

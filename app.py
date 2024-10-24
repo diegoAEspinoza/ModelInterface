@@ -25,6 +25,7 @@ app.layout = html.Div(className='back',children=[
         dcc.Link(html.Button('Logistic Function', className='boton edo_1'), href='/'),
         dcc.Link(html.Button('Lotka-Volterra Model', className='boton edo_2'), href='/lotka_volterra_model'),
         dcc.Link(html.Button('SIR Model', className='boton edo_3'), href='/SIR'),
+        dcc.Link(html.Button('Critical Point', className='boton cp'), href='/criticalPoint'),
     ]),
     
     dash.page_container

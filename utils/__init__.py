@@ -1,3 +1,4 @@
 from .logisticFunc import *
 from .preyPredation import *
-from .SIR_model import *
+from .model_SIR import *
+from .ODE import *

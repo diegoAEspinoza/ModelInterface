@@ -25,13 +25,13 @@ layout = html.Div(className='Pages', children=[
 
         html.Div(className='div_flex', children=[
             html.Div([
-                html.H3('Diferencial X', style={'text-align': 'center'}),
-                dcc.Input(type='text', id='dx', value='x*(5-y)', placeholder="Enter dx expression")  
+                html.H3('Diferencial X'),
+                dcc.Input(type='text', id='dx', value='x*(5-y)')  
             ], style={'padding': '10px'}),
             
             html.Div([
-                html.H3('Diferencial Y', style={'text-align': 'center'}),
-                dcc.Input(type='text', id='dy', value='y*(5-x)', placeholder="Enter dy expression")  
+                html.H3('Diferencial Y'),
+                dcc.Input(type='text', id='dy', value='y*(5-x)')  
             ], style={'padding': '10px'}),
         ]),
     ]),
@@ -55,7 +55,8 @@ layout = html.Div(className='Pages', children=[
 @callback(
     Output('figura_4', 'figure'),
     Input('dx', 'value'),
-    Input('dy', 'value')
+    Input('dy', 'value'),
+
 )
 def process_inputs(dx, dy):
     print(f"Received dx: {dx}, dy: {dy}")

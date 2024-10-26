@@ -1,5 +1,5 @@
 import plotly.graph_objects as go
-import matplotlib.pyplot as plt
+import plotly.figure_factory as ff # mallado de vectores
 import numpy as np
 from sympy import symbols, sympify, Matrix, solve, simplify
 
@@ -26,7 +26,7 @@ def points_ODE(dx_input, dy_input, a, b, n):
     dy = sympify(dy_input)
 
     # Calculate critical points
-    critical_points = [[point[x_sym], point[y_sym]] for point in solve([dx, dy], (x_sym, y_sym), dict=True)]
+    A = np.array(solve([dx, dy], (x_sym, y_sym))).astype(float)
 
     # Create a mesh grid for the plot
     x_vals = np.linspace(a, b, n)
@@ -37,7 +37,6 @@ def points_ODE(dx_input, dy_input, a, b, n):
     U = np.zeros_like(X_)
     V = np.zeros_like(Y_)
 
-    # Iterate over the grid to evaluate the vector field
     for i in range(X_.shape[0]):
         for j in range(X_.shape[1]):
             U[i, j] = dx.subs({x_sym: X_[i, j], y_sym: Y_[i, j]})
@@ -48,20 +47,9 @@ def points_ODE(dx_input, dy_input, a, b, n):
     U_normalized = U / N
     V_normalized = V / N
 
-    """
-    plt.quiver(X_, Y_, U_normalized, V_normalized, color='b', linewidth=1.5)
-
-    for point in critical_points:
-        plt.scatter(point[0], point[1], color='r')
-    plt.scatter([], [], color='r', label='Puntos Críticos')
-
-    plt.legend()
-    plt.show()
-    """
-
-
-    # Create Plotly figure
     fig = go.Figure()
+    quiver = ff.create_quiver(X_, Y_, U_normalized, V_normalized)
+    fig.add_traces(quiver.data)
+    fig.add_traces(go.Scatter(x = A[:,0], y = A[:,1], mode='markers'))
 
-    
     return fig

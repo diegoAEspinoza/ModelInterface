@@ -44,14 +44,15 @@ def temp (X, Y, critical_points, sym):
     x,y = sym
     J = simplify(X.jacobian(Y))
 
-    text = ""
+    text = []
     for point in critical_points:
         J_ = J.subs({x: point[0], y: point[1]})
         T = simplify(J_.trace())
         D = simplify(J_.det())
-        text += f"El punto ({point[0]}:{point[1]}) es un {classify_point(T, D)}\n"
+        text.append(f"El punto ({point[0]}:{point[1]}) es un {classify_point(T, D)}")
 
     return text
+
 
 def points_ODE(dx_input, dy_input, a, b, n, scale_factor):
     """
@@ -63,9 +64,11 @@ def points_ODE(dx_input, dy_input, a, b, n, scale_factor):
     - a (float): Minimum value for the x and y axes.
     - b (float): Maximum value for the x and y axes.
     - n (int): Number of points to create in each dimension for the grid.
+    - scale_factor (float): Factor to scale the vectors in the vector field.
 
     Returns:
     - fig (plotly.graph_objects.Figure): Plotly figure containing the vector field and critical points.
+    - text (str): Classification of critical points.
     """
 
     # Define symbols
@@ -78,8 +81,8 @@ def points_ODE(dx_input, dy_input, a, b, n, scale_factor):
     # Calculate critical points
     A = np.array(solve([dx, dy], (x_sym, y_sym))).astype(float)
     
-    text = temp(Matrix([dx, dy]),Matrix([x_sym, y_sym]),A, [x_sym, y_sym])
-
+    # Generate text classifying the critical points
+    text = temp(Matrix([dx, dy]), Matrix([x_sym, y_sym]), A, [x_sym, y_sym])
 
     # Create a mesh grid for the plot
     x_vals = np.linspace(a, b, n)
@@ -103,7 +106,9 @@ def points_ODE(dx_input, dy_input, a, b, n, scale_factor):
     fig = go.Figure()
     quiver = ff.create_quiver(X_, Y_, U_normalized, V_normalized, scale=scale_factor, name="Vector Field")
     fig.add_traces(quiver.data)
-    fig.add_traces(go.Scatter(x = A[:,0], y = A[:,1], mode='markers', name="Critical Points"))
+    
+    # Corrected marker argument
+    fig.add_traces(go.Scatter(x=A[:, 0], y=A[:, 1], mode='markers', name="Critical Points", marker=dict(size=15)))
 
     fig.update_layout(
         title={
@@ -120,6 +125,4 @@ def points_ODE(dx_input, dy_input, a, b, n, scale_factor):
         legend=dict(orientation='h', y=1.1)
     )
 
-
-
-    return fig,text
+    return fig, text

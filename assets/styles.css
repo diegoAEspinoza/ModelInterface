@@ -1,7 +1,7 @@
 /** En pantallas grandes, se distribuyen horizontalmente **/
 @media (min-width: 768px) {
     .div_parametros {
-        width: 40%; /* Ajustar ancho en pantallas más grandes */
+        width: auto; /* Ajustar ancho en pantallas más grandes */
         margin-right: 10px;
     }
 

@@ -51,19 +51,19 @@ layout = html.Div(className='Pages', children=[
             html.Div(className='div_flex', children=[
                 html.Div([
                     html.H3('Number of points'),
-                    dcc.Input(type='number', value=25, id='point_numbe', step=1, min=0)  
+                    dcc.Input(type='number', value=25, id='point_number', step=1, min=0)  
                 ]),
 
                 html.Div([
                     html.H3('Vector Size'),
-                    dcc.Input(type='number', value=0.2, id='scale_factor', step=0.01, min=0)  
+                    dcc.Input(type='number', value=0.2, id='scale_factor', step=0.1, min=0)  
                 ]),
             ]),
         ]),
 
         html.Div(className='div_resultados', children=[
             html.H2('RESULTS', style={'text-align': 'center'}),
-            html.Div(id='text', style={'text-align': 'center'})
+            html.Div(id='text', children=[])
         ]),
     ]),
 
@@ -90,10 +90,11 @@ layout = html.Div(className='Pages', children=[
     Input('dy', 'value'),
     Input('lower_limit', 'value'),
     Input('upper_limit', 'value'),
-    Input('point_numbe', 'value'),
+    Input('point_number', 'value'),
     Input('scale_factor', 'value'),
 )
 def process_inputs(dx, dy,a, b, n, scale_factor):
-    print(f"Received dx: {dx}, dy: {dy}")
-    fig,text = points_ODE(dx, dy, a, b, n, scale_factor)
-    return fig, text
+    fig, text = points_ODE(dx, dy, a, b, n, scale_factor)
+    formatted_text = "       ".join(text)
+
+    return fig, formatted_text

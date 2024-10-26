@@ -3,6 +3,56 @@ import plotly.figure_factory as ff # mallado de vectores
 import numpy as np
 from sympy import symbols, sympify, Matrix, solve, simplify
 
+def classify_point(T, D):
+    """
+    Clasifica el tipo de punto crítico en un sistema dinámico según la traza, 
+    el determinante y el discriminante.
+
+    Parámetros:
+    - T (float): Traza de la matriz jacobiana.
+    - D (float): Determinante de la matriz jacobiana.
+
+    Retorno:
+    - str: Tipo de punto crítico según el diagrama de estabilidad.
+    """
+    # Calcular el discriminante
+    delta = T**2 - 4 * D
+    
+    # Clasificación según T, D y delta
+    if D < 0:
+        return "Punto Silla (saddle point)"
+    elif D > 0:
+        if delta > 0:
+            if T < 0:
+                return "Nodo estable (atractor)"
+            elif T > 0:
+                return "Nodo inestable (repulsor)"
+        elif delta < 0:
+            if T < 0:
+                return "Foco estable (espiral estable)"
+            elif T > 0:
+                return "Foco inestable (espiral inestable)"
+        elif delta == 0:
+            return "Nodo degenerado"
+    elif D == 0 and delta < 0:
+        return "Centro"
+    
+    return "Punto que no se puede clasificar"
+
+
+def temp (X, Y, critical_points, sym):
+    x,y = sym
+    J = simplify(X.jacobian(Y))
+
+    text = ""
+    for point in critical_points:
+        J_ = J.subs({x: point[0], y: point[1]})
+        T = simplify(J_.trace())
+        D = simplify(J_.det())
+        text += f"El punto ({point[0]}:{point[1]}) es un {classify_point(T, D)}\n"
+
+    return text
+
 def points_ODE(dx_input, dy_input, a, b, n, scale_factor):
     """
     Generates a vector field plot from given first-order ordinary differential equations (ODEs).
@@ -27,6 +77,9 @@ def points_ODE(dx_input, dy_input, a, b, n, scale_factor):
 
     # Calculate critical points
     A = np.array(solve([dx, dy], (x_sym, y_sym))).astype(float)
+    
+    text = temp(Matrix([dx, dy]),Matrix([x_sym, y_sym]),A, [x_sym, y_sym])
+
 
     # Create a mesh grid for the plot
     x_vals = np.linspace(a, b, n)
@@ -48,8 +101,25 @@ def points_ODE(dx_input, dy_input, a, b, n, scale_factor):
     V_normalized = V / N
 
     fig = go.Figure()
-    quiver = ff.create_quiver(X_, Y_, U_normalized, V_normalized, scale=scale_factor)
+    quiver = ff.create_quiver(X_, Y_, U_normalized, V_normalized, scale=scale_factor, name="Vector Field")
     fig.add_traces(quiver.data)
-    fig.add_traces(go.Scatter(x = A[:,0], y = A[:,1], mode='markers'))
+    fig.add_traces(go.Scatter(x = A[:,0], y = A[:,1], mode='markers', name="Critical Points"))
 
-    return fig
+    fig.update_layout(
+        title={
+            'text': 'Campo de vectores',
+            'x': 0.5,
+            'y': 0.92,
+            'xanchor': 'center'
+        },
+        xaxis_title='X(t)',
+        yaxis_title='Y(t)',
+        width=800,
+        template='plotly_white',
+        margin=dict(l=10, r=10, t=90, b=0),
+        legend=dict(orientation='h', y=1.1)
+    )
+
+
+
+    return fig,text

@@ -38,7 +38,6 @@ layout = html.Div(className='Pages', children=[
                 dcc.Input(type='number', value=0, id='recovery_population', step=1, min=0) 
             ]),
         ]),
-
         html.Div(className='div_flex', children=[
             html.Div([
                 html.H3('Initial Transmission Rate'),
@@ -48,9 +47,6 @@ layout = html.Div(className='Pages', children=[
                 html.H3('Initial Recovery Rate'),
                 dcc.Input(type='number', value=0.01, id='recovery_rate', step=0.001, min=0) 
             ]),
-        ]),
-
-        html.Div(className='div_flex', children=[
             html.Div([
                 html.H3('Time'),
                 dcc.Input(type='number', value=100, id='time', step=1, min=0)  
@@ -60,23 +56,13 @@ layout = html.Div(className='Pages', children=[
         html.Div(className='div_flex', children=[
             html.Div([
                 dcc.Checklist(
-                    options=[{'label': 'Change Time (t_change)', 'value': 't_change'}],
-                    value=[],  # No checkboxes selected by default
-                    id='change_time_checkbox'
-                ),
-                html.Div([
-                dcc.Input(type='number', value=20, id='change_time', step=1, min=0, disabled=True)  
-                ])
-            ]),
-
-            html.Div([
-                dcc.Checklist(
                     options=[{'label': 'New Transmission Rate', 'value': 'new_beta'}],
                     value=[],  # No checkboxes selected by default
                     id='new_transmission_checkbox'
                 ),
                 dcc.Input(type='number', value=0.0003, id='new_transmission_rate', step=0.0001, min=0, disabled=True)  
             ]),
+
             html.Div([
                 dcc.Checklist(
                     options=[{'label': 'New Recovery Rate', 'value': 'new_gamma'}],
@@ -85,11 +71,22 @@ layout = html.Div(className='Pages', children=[
                 ),
                 dcc.Input(type='number', value=0.0001, id='new_recovery_rate', step=0.001, min=0, disabled=True)  
             ]),
+
+            html.Div([
+                dcc.Checklist(
+                    options=[{'label': 'Change Time', 'value': 't_change'}],
+                    value=[],  # No checkboxes selected by default
+                    id='change_time_checkbox'
+                ),
+                html.Div([
+                    dcc.Input(type='number', value=20, id='change_time', step=1, min=0, disabled=True)  
+                ])
+            ]),
         ]),
     ]),
 
     html.Div(className='div_grafica', children=[
-        html.H2('GRAPH OF THE FIRST ORDER ODE', style={'text-align': 'center'}),
+        html.H2('SIR Model with Parameter Change', style={'text-align': 'center'}),
         
         html.Div(className='grafica', children=[
             dcc.Loading(type='default', children=dcc.Graph(id='figura_3'))

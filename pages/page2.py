@@ -34,6 +34,10 @@ layout = html.Div(className='Pages', children=[
                 html.H3('Initial Predation Population'),
                 dcc.Input(type='number', value=9, id='pred_ini', step=1, min=0) 
             ]),
+            html.Div([
+                html.H3('Time'),
+                dcc.Input(type='number', value=5, id='time', step=1, min=0)  
+            ]),
         ]),
 
         html.Div(className='div_flex', children=[
@@ -45,6 +49,9 @@ layout = html.Div(className='Pages', children=[
                 html.H3('Predation Rate'),
                 dcc.Input(type='number', value=0.02, id='pred_rate', step=0.01, min=0) 
             ]),
+        ]),
+
+        html.Div(className='div_flex', children=[
             html.Div([
                 html.H3('Predator Growth Rate'),
                 dcc.Input(type='number', value=0.01, id='pred_grow', step=0.01, min=0)  
@@ -54,17 +61,10 @@ layout = html.Div(className='Pages', children=[
                 dcc.Input(type='number', value=0.1, id='pred_mort', step=0.01, min=0)  
             ]),
         ]),
-
-        html.Div(className='div_flex', children=[
-            html.Div([
-                html.H3('Time'),
-                dcc.Input(type='number', value=5, id='time', step=1, min=0)  
-            ]),
-        ]),
     ]),
 
     html.Div(className='div_grafica', children=[
-        html.H2('GRAPH OF THE FIRST ORDER ODE', style={'text-align': 'center'}),
+        html.H2('Lotka-Volterra Model', style={'text-align': 'center'}),
         
         html.Div(className='grafica', children=[
             dcc.Loading(type='default', children=dcc.Graph(id='figura_2'))

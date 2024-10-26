@@ -109,7 +109,7 @@ layout = html.Div(className='Pages', children=[
     Output('new_recovery_rate', 'disabled'),
     Input('change_time_checkbox', 'value'),
     Input('new_transmission_checkbox', 'value'),
-    Input('new_recovery_checkbox', 'value')
+    Input('new_recovery_checkbox', 'value'),
 )
 def toggle_inputs(change_time_enabled, new_beta_enabled, new_gamma_enabled):
     # Habilitar o deshabilitar los inputs basados en los checkboxes

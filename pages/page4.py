@@ -27,12 +27,35 @@ layout = html.Div(className='Pages', children=[
             html.Div([
                 html.H3('Diferencial X'),
                 dcc.Input(type='text', id='dx', value='x*(5-y)')  
-            ], style={'padding': '10px'}),
+            ]),
             
             html.Div([
                 html.H3('Diferencial Y'),
                 dcc.Input(type='text', id='dy', value='y*(5-x)')  
-            ], style={'padding': '10px'}),
+            ]),
+        ]),
+        html.Div(className='div_flex', children=[
+            html.Div([
+                html.H3('Lower Limit'),
+                dcc.Input(type='number', value=-2, id='lower_limit', step=1)  
+            ]),
+            
+            html.Div([
+                html.H3('Upper Limit'),
+                dcc.Input(type='number', value=10, id='upper_limit', step=1)  
+            ]),
+        ]),
+
+        html.Div(className='div_flex', children=[
+            html.Div([
+                html.H3('Number of points'),
+                dcc.Input(type='number', value=25, id='point_numbe', step=1, min=0)  
+            ]),
+            
+            html.Div([
+                html.H3('Vector Size'),
+                dcc.Input(type='number', value=0.2, id='scale_factor', step=0.01, min=0)  
+            ]),
         ]),
     ]),
 
@@ -56,9 +79,12 @@ layout = html.Div(className='Pages', children=[
     Output('figura_4', 'figure'),
     Input('dx', 'value'),
     Input('dy', 'value'),
-
+    Input('lower_limit', 'value'),
+    Input('upper_limit', 'value'),
+    Input('point_numbe', 'value'),
+    Input('scale_factor', 'value'),
 )
-def process_inputs(dx, dy):
+def process_inputs(dx, dy,a, b, n, scale_factor):
     print(f"Received dx: {dx}, dy: {dy}")
-    fig = points_ODE(dx, dy, -2.5, 10, 25)
+    fig = points_ODE(dx, dy, a, b, n, scale_factor)
     return fig

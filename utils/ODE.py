@@ -3,7 +3,7 @@ import plotly.figure_factory as ff # mallado de vectores
 import numpy as np
 from sympy import symbols, sympify, Matrix, solve, simplify
 
-def points_ODE(dx_input, dy_input, a, b, n):
+def points_ODE(dx_input, dy_input, a, b, n, scale_factor):
     """
     Generates a vector field plot from given first-order ordinary differential equations (ODEs).
     
@@ -48,7 +48,7 @@ def points_ODE(dx_input, dy_input, a, b, n):
     V_normalized = V / N
 
     fig = go.Figure()
-    quiver = ff.create_quiver(X_, Y_, U_normalized, V_normalized)
+    quiver = ff.create_quiver(X_, Y_, U_normalized, V_normalized, scale=scale_factor)
     fig.add_traces(quiver.data)
     fig.add_traces(go.Scatter(x = A[:,0], y = A[:,1], mode='markers'))
 

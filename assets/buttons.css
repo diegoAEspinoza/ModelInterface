@@ -6,7 +6,6 @@
     flex-wrap: wrap; /* Hacer que los botones se envuelvan si es necesario */
     height: auto;
     margin: 10px;
-    border-radius: 10px;
     padding: 10px;
     border-radius: 10px;
 }
@@ -28,15 +27,7 @@
     transition: background-color 0.3s, transform 0.2s; /* Transición suave */
 }
 
-/** Boton 1 **/
-.edo_1:hover {
-    color: white; /* Cambiar color del texto al pasar el mouse */
-    background-color: blueviolet; /* Cambiar color de fondo al pasar el mouse */
-    transform: scale(1.05); /* Aumentar ligeramente el tamaño al pasar el mouse */
-}
-
-/** Boton 2 **/
-.edo_2:hover {
+.boton:hover {
     color: white; /* Cambiar color del texto al pasar el mouse */
     background-color: blueviolet; /* Cambiar color de fondo al pasar el mouse */
     transform: scale(1.05); /* Aumentar ligeramente el tamaño al pasar el mouse */

@@ -54,33 +54,24 @@ layout = html.Div(className='Pages', children=[
         ]),
 
         html.Div(className='div_flex', children=[
-            html.Div([
-                dcc.Checklist(
-                    options=[{'label': 'New Transmission Rate', 'value': 'new_beta'}],
-                    value=[],  # No checkboxes selected by default
-                    id='new_transmission_checkbox'
-                ),
-                dcc.Input(type='number', value=0.0003, id='new_transmission_rate', step=0.0001, min=0, disabled=True)  
-            ]),
-
-            html.Div([
-                dcc.Checklist(
-                    options=[{'label': 'New Recovery Rate', 'value': 'new_gamma'}],
-                    value=[],  # No checkboxes selected by default
-                    id='new_recovery_checkbox', 
-                ),
-                dcc.Input(type='number', value=0.0001, id='new_recovery_rate', step=0.001, min=0, disabled=True)  
-            ]),
-
-            html.Div([
-                dcc.Checklist(
-                    options=[{'label': 'Change Time', 'value': 't_change'}],
-                    value=[],  # No checkboxes selected by default
-                    id='change_time_checkbox'
-                ),
+            dcc.Checklist(
+                options=[{'label': 'Enable inputs', 'value': 'enable'}],
+                value=[],  # No checkboxes selected by default
+                id='checkbox'
+            ),  
+            html.Div(className='div_flex', children=[
                 html.Div([
-                    dcc.Input(type='number', value=20, id='change_time', step=1, min=0, disabled=True)  
-                ])
+                    html.H3('Change Time'),
+                   dcc.Input(type='number', value=20, id='change_time', step=1, min=0, disabled=True),
+                ]),
+                html.Div([
+                    html.H3('New Recovery Rate'),
+                    dcc.Input(type='number', value=0.0001, id='new_recovery_rate', step=0.0021, min=0, disabled=True),
+                ]),
+                html.Div([
+                    html.H3('New Transmission Rate'),
+                    dcc.Input(type='number', value=0.0003, id='new_transmission_rate', step=0.0001, min=0, disabled=True)
+                ]),
             ]),
         ]),
     ]),
@@ -94,27 +85,6 @@ layout = html.Div(className='Pages', children=[
     ])
 ])
 
-###################################################################################
-#
-# Callback para habilitar/deshabilitar los inputs
-#
-###################################################################################
-
-@callback(
-    Output('change_time', 'disabled'),
-    Output('new_transmission_rate', 'disabled'),
-    Output('new_recovery_rate', 'disabled'),
-    Input('change_time_checkbox', 'value'),
-    Input('new_transmission_checkbox', 'value'),
-    Input('new_recovery_checkbox', 'value'),
-)
-def toggle_inputs(change_time_enabled, new_beta_enabled, new_gamma_enabled):
-    # Habilitar o deshabilitar los inputs basados en los checkboxes
-    change_time_disabled = 'change_time' not in change_time_enabled
-    new_beta_disabled = 'new_beta' not in new_beta_enabled
-    new_gamma_disabled = 'new_gamma' not in new_gamma_enabled
-
-    return change_time_disabled, new_beta_disabled, new_gamma_disabled
 
 ###################################################################################
 #
@@ -123,7 +93,11 @@ def toggle_inputs(change_time_enabled, new_beta_enabled, new_gamma_enabled):
 ###################################################################################
 
 @callback(
+    Output('change_time', 'disabled'),
+    Output('new_recovery_rate', 'disabled'),
+    Output('new_transmission_rate', 'disabled'),
     Output('figura_3', 'figure'),
+    Input('checkbox', 'value'),
     Input('initial_population', 'value'),
     Input('infected_population', 'value'),
     Input('recovery_population', 'value'),
@@ -131,30 +105,24 @@ def toggle_inputs(change_time_enabled, new_beta_enabled, new_gamma_enabled):
     Input('recovery_rate', 'value'),
     Input('time', 'value'),
     Input('change_time', 'value'),
-    Input('new_transmission_rate', 'value'),
     Input('new_recovery_rate', 'value'),
+    Input('new_transmission_rate', 'value'),
 )
-def grafic_SIR_model(N, I, R, beta, gamma, t, change_time, new_beta, new_gamma):
+
+def grafic_SIR_model(checkbox_value, N, I, R, beta, gamma, t, change_time, new_gamma, new_beta):
+    
+    # Activar/desactivar según si el checkbox está marcado
+    enabled = 'enable' in checkbox_value
+
+    if not enabled:
+       change_time = t
+       new_beta = beta
+       new_gamma = gamma
+
+    # Ensure initial conditions
     S = N - I - R
     
-    print("Hola")
-    print(change_time)
-    print(new_beta)
-    print(new_gamma)
-
-    # Set defaults if None
-    if change_time is None or change_time == '':
-        change_time = t  # or a sensible default like 100
-    if new_beta is None or new_beta == '':
-        new_beta = beta  # Default to original beta
-    if new_gamma is None or new_gamma == '':
-        new_gamma = gamma  # Default to original gamma
-    
-    print("Adios")
-    print(change_time)
-    print(new_beta)
-    print(new_gamma)
-
-    # Generate the graph with the SIR model
+    # Generate the SIR model graph
     fig = model_SIR([S, I, R], beta, gamma, t, change_time, new_beta, new_gamma)
-    return fig
+    return not enabled, not enabled, not enabled, fig
+

@@ -54,11 +54,11 @@ layout = html.Div(className='Pages', children=[
         ]),
 
         html.Div(className='div_flex', children=[
-            dcc.Checklist(
-                options=[{'label': 'Enable inputs', 'value': 'enable'}],
+           dcc.Checklist(
+                options=[{'label': 'Enable inputs', 'value': 'enable', 'className': 'checklist-label'}],
                 value=[],  # No checkboxes selected by default
                 id='checkbox'
-            ),  
+            ),
             html.Div(className='div_flex', children=[
                 html.Div([
                     html.H3('Change Time'),

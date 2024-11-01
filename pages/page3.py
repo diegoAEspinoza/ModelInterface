@@ -53,11 +53,11 @@ layout = html.Div(className='Pages', children=[
             ]),
         ]),
 
-        html.Div(className='div_flex', children=[
+        html.Div(className='centered-container', children=[
            dcc.Checklist(
-                options=[{'label': 'Enable inputs', 'value': 'enable', 'className': 'checklist-label'}],
+                options=[{'label': 'Enable inputs', 'value': 'enable'}],
                 value=[],  # No checkboxes selected by default
-                id='checkbox'
+                id='checkbox', className="checklist-label"
             ),
             html.Div(className='div_flex', children=[
                 html.Div([
@@ -66,7 +66,7 @@ layout = html.Div(className='Pages', children=[
                 ]),
                 html.Div([
                     html.H3('New Recovery Rate'),
-                    dcc.Input(type='number', value=0.0001, id='new_recovery_rate', step=0.0021, min=0, disabled=True),
+                    dcc.Input(type='number', value=0.0001, id='new_recovery_rate', step=0.0001, min=0, disabled=True),
                 ]),
                 html.Div([
                     html.H3('New Transmission Rate'),

@@ -1,0 +1,21 @@
+/* Contenedor centrado */
+.centered-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 20px;
+}
+
+/* Estilo para el label del checklist */
+.checklist-label label {
+    font-size: 18px;
+    font-weight: bold;
+    color: red; /* Cambia el color según prefieras */
+    margin-right: 10px;
+}
+
+/* Estilo para el checkbox */
+.checklist-label input[type="checkbox"] {
+    transform: scale(1.2);
+    margin-right: 5px;
+}

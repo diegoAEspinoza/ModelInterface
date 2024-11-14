@@ -99,7 +99,7 @@ def points_ODE(dx_input, dy_input, a, b, n, scale_factor):
             V[i, j] = dy.subs({x_sym: X_[i, j], y_sym: Y_[i, j]})
 
     # Normalize the vector field
-    N = np.hypot(U, V) + 1e-8  # Prevent division by zero
+    N = np.hypot(U, V) + 1e-8  
     U_normalized = U / N
     V_normalized = V / N
 

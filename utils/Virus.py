@@ -4,50 +4,78 @@ import plotly.figure_factory as ff # mallado de vectores
 from scipy.integrate import odeint
 
 
-def SIARS (Gamma, mu, gamma, xi, beta, p, alpha, delta, psi, eta, t):
-    def model(populations, t, Gamma, mu, gamma, xi, beta, p, alpha, delta, psi, eta):
+def SIARS (populations, t, Lambda, mu, lambda1, xi, beta, p, alpha, delta, psi, eta):
+    def model(populations, t, Lambda, mu, lambda1, xi, beta, p, alpha, delta, psi, eta):
         S, E, I, A, R = populations
         xi1, xi2 = xi
         p1, p2 = p
 
-        dSdt = Gamma - beta*S*(I+gamma*A) - mu*S + eta*R
-        dEdt = beta*S*(I + gamma*A) - (alpha + mu)*E
+        dSdt = Lambda - beta*S*(I+lambda1*A) - mu*S + eta*R
+        dEdt = beta*S*(I + lambda1*A) - (alpha + mu)*E
         dIdt = p1*alpha*E - (psi + mu + xi2)*I
         dAdt = (1-p1 - p2)*alpha*E -(delta + mu + xi1)*A
         dRdt = psi*I + delta*A + p2*alpha*E - (eta+mu)*R
-        return [dSdt, dEdt, dIdt,dAdt,dRdt]
+        return dSdt, dEdt, dIdt,dAdt,dRdt
     
-    S, E, I, A, R = 10000, 1, 1, 1, 0
-    populations = [S, E, I, A, R]
-    t = np.linspace(0,100,100)
-    solution= odeint(model, populations, t, args=(Gamma, mu, gamma, xi, beta, p, alpha, delta, psi, eta))
+    
+    t = np.linspace(0,t,30)
+    solution = odeint(model, populations, t, args=(Lambda, mu, lambda1, xi, beta, p, alpha, delta, psi, eta))
+
+    S, E, I, A, R = solution.T
 
 
-"""
-Gamma= 3
-mu = 2
-gamma =4
-xi = [5, 5]
-beta = 10
-p = [2.2 , 06.6]
-alpha = 2.2
-delta = 7.96
-psi = 0.1
-eta = 7
+     # Create Plotly figure
+    fig_t = go.Figure()
 
-S, E, I, A, R = 10000, 1, 1, 1, 0
-populations = [S, E, I, A, R]
+    fig_t.add_trace(go.Scatter(x=t, y=S, mode='lines', name='Susceptibles', line=dict(color='blue')))
+    fig_t.add_trace(go.Scatter(x=t, y=E, mode='lines', name='Expuestos', line=dict(color='orange')))
+    fig_t.add_trace(go.Scatter(x=t, y=I, mode='lines', name='Infectados', line=dict(color='red')))
+    fig_t.add_trace(go.Scatter(x=t, y=A, mode='lines', name='Asintomáticos', line=dict(color='green')))
+    fig_t.add_trace(go.Scatter(x=t, y=R, mode='lines', name='Recuperados', line=dict(color='purple')))
 
-t = np.linspace(0,100,100)
+    fig_t.update_layout(
+        title='Evolución de la Población en el Modelo SIARS',
+        xaxis_title='Tiempo (años)',
+        yaxis_title='Número de individuos',
+        template='plotly_white'
+    )
 
-solution= odeint(model, populations, t, args=(Gamma, mu, gamma, xi, beta, p, alpha, delta, psi, eta))
+    fig = [go.Figure(),go.Figure(),go.Figure(),go.Figure(),go.Figure()]
+    fig[0].add_trace(go.Scatter(x=t, y=S, mode='lines', name='Susceptibles', line=dict(color='blue')))
+    fig[1].add_trace(go.Scatter(x=t, y=E, mode='lines', name='Expuestos', line=dict(color='orange')))
+    fig[2].add_trace(go.Scatter(x=t, y=I, mode='lines', name='Infectados', line=dict(color='red')))
+    fig[3].add_trace(go.Scatter(x=t, y=A, mode='lines', name='Asintomáticos', line=dict(color='green')))
+    fig[4].add_trace(go.Scatter(x=t, y=R, mode='lines', name='Recuperados', line=dict(color='purple')))
 
-#plt.plot(t, solution[:,0], label="Suseptibles")
-#plt.plot(t, solution[:,1], label="Expuesto")
-plt.plot(t, solution[:,2], label="Infectados")
-plt.plot(t, solution[:,3], label="Asintomaticos")
-plt.plot(t, solution[:,4], label="Recuperados")
-plt.legend()
-plt.show()
+    fig[0].update_layout(
+        title='Evolución de la Población en el Modelo SIARS',
+        xaxis_title='Tiempo (años)',
+        yaxis_title='Número de Suceptibles',
+        template='plotly_white'
+    )
+    fig[1].update_layout(
+        title='Evolución de la Población en el Modelo SIARS',
+        xaxis_title='Tiempo (años)',
+        yaxis_title='Número de Expuesto',
+        template='plotly_white'
+    )
+    fig[2].update_layout(
+        title='Evolución de la Población en el Modelo SIARS',
+        xaxis_title='Tiempo (años)',
+        yaxis_title='Número de Infectados',
+        template='plotly_white'
+    )
+    fig[3].update_layout(
+        title='Evolución de la Población en el Modelo SIARS',
+        xaxis_title='Tiempo (años)',
+        yaxis_title='Número de Asistomaticos',
+        template='plotly_white'
+    )
+    fig[4].update_layout(
+        title='Evolución de la Población en el Modelo SIARS',
+        xaxis_title='Tiempo (años)',
+        yaxis_title='Número de Recuperados',
+        template='plotly_white'
+    )
 
-"""
+    return [fig_t,fig]

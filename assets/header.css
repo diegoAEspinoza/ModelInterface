@@ -45,7 +45,7 @@
 .div_flex {
     display: flex;
     align-items: center; 
-    flex-wrap: wrap;  /*Permitir que los elementos se ajusten en pantallas pequeñas */
+    /* flex-wrap: wrap;  Permitir que los elementos se ajusten en pantallas pequeñas */
     justify-content: space-between;
     
 }

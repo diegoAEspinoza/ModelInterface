@@ -1,6 +1,6 @@
 /** Cinta de navegación **/
 .contenedor_navegacion {
-    background-color: rgb(243, 117, 13);
+    background-color: rgb(227, 211, 211);
     display: flex;
     justify-content: center;
     flex-wrap: wrap; /* Hacer que los botones se envuelvan si es necesario */
@@ -12,7 +12,7 @@
 
 /** Estilo general para los botones **/
 .boton {
-    background-color: rgb(28, 233, 154); /* Color de fondo */
+    background-color: rgb(119, 255, 203); /* Color de fondo */
     text-decoration: none; /* Elimina el subrayado */
     border-radius: 10px; /* Bordes redondeados */
     font-weight: 500; /* Peso de la fuente */
@@ -47,7 +47,7 @@
 
 /** Estilo específico para el botón de alternar el campo de vectores **/
 .toggle-button {
-    background-color: rgb(50, 150, 250); /* Color de fondo */
+    background-color: rgb(148, 200, 252); /* Color de fondo */
     color: white; /* Color del texto */
     text-decoration: none; /* Elimina el subrayado */
     border-radius: 10px; /* Bordes redondeados */

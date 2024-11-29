@@ -23,11 +23,69 @@
 
 /** Página 1 **/
 .div_parametros, .div_grafica, .div_resultados {
-    background-color: rgb(175, 170, 170);
-    width: 100%; /* Ocupan todo el ancho en pantallas pequeñas */
-    border: 3px solid rgb(10, 10, 10);
-    border-radius: 20px;
-    padding: 10px;
-    margin: 10px; /* Separar visualmente los bloques */
-    box-sizing: border-box; /* Incluir padding en el cálculo del ancho */
+    background-color: rgb(229, 229, 229); /* Fondo gris suave */
+    width: 100%; /* Ocupa todo el ancho disponible */
+    border: 3px solid rgb(77, 75, 75); /* Borde de color gris oscuro */
+    border-radius: 20px; /* Bordes redondeados */
+    padding: 20px; /* Espaciado interno más grande */
+    margin: 20px 0; /* Separación más amplia entre bloques */
+    box-sizing: border-box; /* Incluye padding en el cálculo del ancho */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Sombra ligera para dar profundidad */
+}
+
+/* Títulos dentro de la gráfica */
+.div_grafica h2 {
+    text-align: center; /* Centrar el título */
+    font-size: 24px; /* Aumentar tamaño de fuente */
+    color: #333; /* Color de texto oscuro */
+    margin-bottom: 20px; /* Separación del título con las gráficas */
+    font-family: 'Arial', sans-serif; /* Fuente más moderna */
+    font-weight: 600; /* Hacer el texto más prominente */
+}
+
+/* Contenedor general de las gráficas */
+.grafica {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between; /* Separar las gráficas */
+    gap: 20px; /* Espaciado entre las gráficas */
+}
+
+/* El gráfico con id 'COMPLETO' estará solo en su propia fila */
+.grafica_completo {
+    width: 100%; /* Ocupa todo el ancho de la fila */
+}
+
+/* Gráficas que estarán en fila de 2 en 2 */
+.grafica_par {
+    display: flex;
+    width: 100%; /* Ocupa todo el ancho de la fila */
+    gap: 20px; /* Espaciado entre los gráficos */
+}
+
+/* Ajustes para las gráficas dentro de cada fila */
+.grafica_par div, .grafica_completo div {
+    flex: 1;
+    min-width: 48%; /* Cada gráfico tiene un tamaño mínimo */
+}
+
+/* Estilos para el último gráfico, 'recuperado', para que ocupe toda la fila si es necesario */
+.grafica_recuperado {
+    width: 100%; /* Asegura que el gráfico ocupe toda la fila */
+    display: flex; /* Hace que se ajuste adecuadamente */
+    justify-content: center; /* Centra el gráfico en la fila */
+}
+
+/* Estilos para los gráficos individuales */
+.dcc-graph {
+    border-radius: 15px; /* Bordes redondeados para los gráficos */
+    background-color: white; /* Fondo blanco para los gráficos */
+    padding: 10px; /* Espaciado dentro de cada gráfico */
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Sombra suave para cada gráfico */
+}
+
+/* Estilos del cargador */
+.dcc-loading {
+    color: rgb(77, 75, 75); /* Color gris para los iconos de carga */
+    font-size: 20px; /* Tamaño de fuente del indicador de carga */
 }

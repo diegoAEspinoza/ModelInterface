@@ -1,9 +1,9 @@
 .back{
-    background-color: rgb(162, 200, 233);
+    background-color: rgb(211, 230, 246);
 }
 
 .header {
-    background-color: salmon;
+    background-color: rgb(239, 204, 201);
     display: flex;
     flex-wrap: wrap; /* Permite que los elementos se ajusten en pantallas pequeñas */
     height: auto;

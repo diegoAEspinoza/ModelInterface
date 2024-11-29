@@ -134,18 +134,32 @@ layout = html.Div(className='', children=[
     ]),
 
     # Sección de gráfica
-    html.Div(className='div_grafica', children=[
-        html.H2('GRAPH OF THE FIRST ORDER ODE', style={'text-align': 'center'}),
-        
-        html.Div(className='grafica', children=[
+   html.Div(className='div_grafica', children=[
+    html.H2('GRAPH OF THE FIRST ORDER ODE', style={'text-align': 'center'}),
+    
+    html.Div(className='grafica', children=[
+        # El gráfico 'COMPLETO' estará solo en su propia fila
+        html.Div([
             dcc.Loading(type='default', children=dcc.Graph(id='COMPLETO')),
+        ], className='grafica_completo'),
+        
+        # Los siguientes gráficos compartirán fila de 2 en 2
+        html.Div([
             dcc.Loading(type='default', children=dcc.Graph(id='suceptibles')),
             dcc.Loading(type='default', children=dcc.Graph(id='expuesto')),
+        ], className='grafica_par'),
+        
+        html.Div([
             dcc.Loading(type='default', children=dcc.Graph(id='infectado')),
             dcc.Loading(type='default', children=dcc.Graph(id='asintomatico')),
+        ], className='grafica_par'),
+        
+        # El gráfico 'recuperado' estará solo en su propia fila
+        html.Div([
             dcc.Loading(type='default', children=dcc.Graph(id='recuperado')),
-        ])
+        ], className='grafica_recuperado'),
     ])
+])
 ])
 
 

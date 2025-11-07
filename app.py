@@ -1,3 +1,4 @@
+
 from dash import Dash, html, dcc
 import dash
 
@@ -12,6 +13,8 @@ app = Dash(
     suppress_callback_exceptions=True,
     external_scripts=external_scripts
 )
+
+server = app.server
 
 app.layout = html.Div(children=[
     html.Div(className='mx-auto max-w-7xl px-2 py-4 bg-blue-400', children=[
@@ -65,5 +68,5 @@ app.layout = html.Div(children=[
 ])
 
 if __name__ == '__main__':
-    app.run_server(debug=True, port='1254')
+    app.run_server(debug=False)
 

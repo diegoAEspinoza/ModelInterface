@@ -62,53 +62,53 @@ layout = html.Div(className="space-y-9", children=[
                 # Parámetros adicionales
                 html.Div(className="flex-1", children=[
                     html.Div([
-                        html.H3(className="font-semibold", children='Lambda (Λ)'),
+                        html.H3(className="font-semibold", children='Tasa de nacimientos'),
                         dcc.Input(className="w-full text-sm px-2 py-1 border border-gray-400", type='number', value=0.0613, id='Lambda', debounce=True)
                     ]),
                     html.Div([
-                        html.H3(className="font-semibold", children='mu'),
+                        html.H3(className="font-semibold", children='Tasa de muerte natural'),
                         dcc.Input(className="w-full text-sm px-2 py-1 border border-gray-400", type='number', value=0.0688, id='mu', debounce=True)
                     ]),
                     html.Div([
-                        html.H3(className="font-semibold", children='lambda'),
+                        html.H3(className="font-semibold", children='Tasa de infección de un dispositivo Asintomático'),
                         dcc.Input(className="w-full text-sm px-2 py-1 border border-gray-400", type='number', value=0.35, id='lambda1', debounce=True)
                     ]),
                     html.Div([
-                        html.H3(className="font-semibold", children='xi1'),
+                        html.H3(className="font-semibold", children='Tasa de daño Asintomático'),
                         dcc.Input(className="w-full text-sm px-2 py-1 border border-gray-400", type='number', value=0.08, id='xi1', debounce=True)
                     ]),
                     html.Div([
-                        html.H3(className="font-semibold", children='xi2'),
+                        html.H3(className="font-semibold", children='Tasa de daño Infectado'),
                         dcc.Input(className="w-full text-sm px-2 py-1 border border-gray-400", type='number', value=0.07, id='xi2', debounce=True)
                     ]),
                     html.Div([
-                        html.H3(className="font-semibold", children='beta'),
+                        html.H3(className="font-semibold", children='Tasa de contacto'),
                         dcc.Input(className="w-full text-sm px-2 py-1 border border-gray-400", type='number', value=0.01, id='beta', debounce=True)
                     ]),
                 ]),
                 html.Div(className="flex-1", children=[
                     html.Div([
-                        html.H3(className="font-semibold", children='rho1'),
+                        html.H3(className="font-semibold", children='Proporción a Infectado'),
                         dcc.Input(className="w-full text-sm px-2 py-1 border border-gray-400", type='number', value=0.7, id='rho1', debounce=True)
                     ]),
                     html.Div([
-                        html.H3(className="font-semibold", children='rho2'),
+                        html.H3(className="font-semibold", children='Proporción a Recuperado'),
                         dcc.Input(className="w-full text-sm px-2 py-1 border border-gray-400", type='number', value=0.05, id='rho2', debounce=True)
                     ]),
                     html.Div([
-                        html.H3(className="font-semibold", children='alpha'),
+                        html.H3(className="font-semibold", children='Tasa de egreso del Expuesto'),
                         dcc.Input(className="w-full text-sm px-2 py-1 border border-gray-400", type='number', value=0.75, id='alpha', debounce=True)
                     ]),
                     html.Div([
-                        html.H3(className="font-semibold", children='delta'),
+                        html.H3(className="font-semibold", children='Tasa de recuperación del Asintomático'),
                         dcc.Input(className="w-full text-sm px-2 py-1 border border-gray-400", type='number', value=0.04, id='delta', debounce=True)
                     ]),
                     html.Div([
-                        html.H3(className="font-semibold", children='psi'),
+                        html.H3(className="font-semibold", children='Tasa de recuperación del Infectado'),
                         dcc.Input(className="w-full text-sm px-2 py-1 border border-gray-400", type='number', value=0.1, id='psi', debounce=True)
                     ]),
                     html.Div([
-                        html.H3(className="font-semibold", children='eta'),
+                        html.H3(className="font-semibold", children='Tasa de pérdida de inmunidad'),
                         dcc.Input(className="w-full text-sm px-2 py-1 border border-gray-400", type='number', value=0.001, id='eta', debounce=True)
                     ]),
                 ]),

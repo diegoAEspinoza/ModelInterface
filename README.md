@@ -30,7 +30,7 @@ pip install dash scipy numpy sympy
 Desde la carpeta del projecto, ejecutaremos el servidor mediante:
 
 ```shell
-python main.py
+python app.py
 ```
 
 **Ojo:** En algunas instalaciones de python de debe cambiar el comando

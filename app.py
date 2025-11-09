@@ -25,15 +25,17 @@ app.layout = html.Div(children=[
             dcc.Link(html.H1(className='font-bold text-3xl text-white', children="Interfaz Gráfica"), href='/')
         ])
     ]), 
-    #html.Div(className='mx-auto max-w-7xl px-2 py-4', children=[
-    #    html.Div(className='flex gap-6 justify-center', children=[
+    html.Div(className='mx-auto max-w-7xl px-2 py-4', children=[
+        html.Div(className='flex gap-6 justify-center', children=[
             #dcc.Link(html.Button('Primer ejemplo', className='px-4 py-2 bg-blue-600 text-white rounded-xl hover:bg-blue-700'), href='/Edo1'),
             #dcc.Link(html.Button('Segundo ejemplo', className='px-4 py-2 bg-blue-600 text-white rounded-xl hover:bg-blue-700'), href='/Edo2'),
             #dcc.Link(html.Button('Tercer ejemplo', className='px-4 py-2 bg-blue-600 text-white rounded-xl hover:bg-blue-700'), href='/Edo3'),
             #dcc.Link(html.Button('Cuarto ejemplo', className='px-4 py-2 bg-blue-600 text-white rounded-xl hover:bg-blue-700'), href='/Edo4'),
-            #dcc.Link(html.Button('Proyecto', className='px-4 py-2 bg-blue-600 text-white rounded-xl hover:bg-blue-700'), href='/'),
-    #    ]),
-    #]),
+            dcc.Link(html.Button('Modelo', className='px-4 py-2 bg-blue-600 text-white rounded-xl hover:bg-blue-700'), href='/'),
+            dcc.Link(html.Button('Simulacion', className='px-4 py-2 bg-blue-600 text-white rounded-xl hover:bg-blue-700'), href='/simulacion'),
+
+        ]),
+    ]),
     html.Div(className='mx-auto max-w-7xl px-2 py-4', children=[
         dash.page_container
     ]),

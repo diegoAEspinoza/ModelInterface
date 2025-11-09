@@ -4,7 +4,7 @@ from utils import *
 
 dash.register_page(
     __name__,
-    path='/',
+    path='/simulacion',
     name='Proyecto Modelos'
 )
 

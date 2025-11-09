@@ -18,7 +18,7 @@ layout = html.Div(className="space-y-9", children=[
                 html.Div(className='flex-1 space-y-1', children=[
                     html.Div([
                         html.H3(className="text-xl font-semibold text-blue-800", children='Población inicial'),
-                        dcc.Input(className="w-full mt-1 px-4 py-2 border-2 border-blue-600 rounded-xl", type='number', value=1000, id='pob_ini', debounce=True, step=1)
+                        dcc.Input(className="w-full mt-1 px-4 py-2 border-2 border-blue-600 rounded-xl", type='number', value=998, id='pob_ini', debounce=True, step=1)
                     ]),
                     html.Div([
                         html.H3(className="text-xl font-semibold text-blue-800", children='Expuestos'),

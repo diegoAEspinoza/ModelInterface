@@ -10,21 +10,50 @@ dash.register_page(
 
 layout = html.Div(className="space-y-9", children=[
     html.Div(className="flex flex-col gap-9 items-center", children=[
-        html.Div(className="font-semibold text-2xl", children="Modelo virus informático"),
+        html.Div(className="font-semibold text-2xl", children=""),
         html.Div(
-            className='flex gap-6', children=[
-                # Imagen 1
-                html.Img(
-                    className="w-[25rem]",
-                    src='/assets/model.png', 
-                    alt='Imagen de modelo', 
-                ),
-                # Imagen 2
-                html.Img(
-                    className="w-[25rem]",
-                    src='/assets/model1.png', 
-                    alt='Imagen de modelo', 
-                )
+            className='flex flex-wrap justify-center gap-6', 
+            children=[
+                
+                html.Div(className="flex flex-col items-center gap-3", children=[
+                    html.H3(className="font-semibold text-blue-800 text-3xl", children="Diagrama del Modelo"), 
+                    
+                    html.Img(
+                        className="w-full shadow-lg rounded-md",
+                        src='/assets/diagram.png', 
+                        alt='Diagrama del modelo SEIARS', 
+                    ),
+                ]),
+            ]
+        ),
+
+        html.Div(
+            className='flex flex-wrap justify-center gap-6', 
+            children=[
+                
+                html.Div(className="flex flex-col items-center gap-3", children=[
+                    html.H3(className="font-semibold text-blue-800 text-3xl", children="Modelo Matemático"), 
+                    
+                    html.Img(
+                        className="w-full shadow-lg rounded-md",
+                        src='/assets/model.png', 
+                        alt='Diagrama del modelo SEIARS', 
+                    ),
+                ]),
+            ]
+        ),
+        html.Div(
+            className='flex flex-wrap justify-center gap-6', 
+            children=[
+                html.Div(className="flex flex-col items-center gap-3", children=[
+                    html.H3(className="font-semibold text-blue-800 text-3xl", children="Notación del modelo SEIARS"), 
+                    
+                    html.Img(
+                        className="w-full shadow-lg rounded-md",
+                        src='/assets/model1.png', 
+                        alt='Notación del modelo SEIARS', 
+                    )
+                ])
             ]
         ),
     ]),

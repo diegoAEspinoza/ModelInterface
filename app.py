@@ -22,7 +22,7 @@ app.layout = html.Div(children=[
             html.Div(className='w-48 aspect-square overflow-hidden', children=[
                 html.Img(className='w-full h-full object-cover', src="assets/dog.png")
             ]),
-            dcc.Link(html.H1(className='font-bold text-3xl text-white', children="Interfaz Gráfica"), href='/')
+            dcc.Link(html.H1(className='font-bold text-3xl text-white', children="Interfaz Gráfica del Modelo SEIARS"), href='/')
         ])
     ]), 
     html.Div(className='mx-auto max-w-7xl px-2 py-4', children=[
@@ -70,5 +70,5 @@ app.layout = html.Div(children=[
 ])
 
 if __name__ == '__main__':
-    app.run(debug=False)
+    app.run(debug=True)
 

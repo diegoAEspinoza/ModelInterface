@@ -12,7 +12,7 @@ layout = html.Div(className="space-y-9", children=[
     
     html.Div(className="flex flex-col gap-6", children=[
         html.Div(className="space-y-3", children=[
-            html.H2(className="font-semibold text-center text-2xl", children='Parámetros'),
+            html.H2(className="font-semibold text-blue-500 text-center text-3xl", children='Parámetros'),
             html.Div(className="flex gap-10", children=[
                 # Parámetros generales
                 html.Div(className='flex-1 space-y-1', children=[
@@ -97,12 +97,12 @@ layout = html.Div(className="space-y-9", children=[
             ]),
         ]),
         html.Div(className="", children=[
-            html.Span(className="text-xl font-semibold text-blue-800", children="Tasa de reproducción básica: "),
+            html.Span(className="text-2xl font-semibold text-blue-800", children="Tasa de reproducción básica: "),
             html.Span(id="basic"),
         ]),
         # Sección de gráfica
         html.Div(className="flex-1", children=[
-            html.H2(className="font-semibold text-center text-2xl", children='Resultados'),
+            html.H2(className="font-semibold text-blue-500  text-center text-3xl", children='Resultados'),
             html.Div(className='grid grid-cols-3 gap-6', children=[
                 html.Div(className="col-span-3", children=dcc.Loading(type='default', children=dcc.Graph(id='COMPLETO'))),
                 html.Div(className="col-span-1", children=dcc.Loading(type='default', children=dcc.Graph(id='suceptibles'))),

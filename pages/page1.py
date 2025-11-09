@@ -4,7 +4,7 @@ from utils import ecuacion_logistica
 
 dash.register_page(
     __name__,
-    path='/',
+    path='/Edo1',
     name='Edo1'
 )
 

@@ -25,6 +25,10 @@ Las instalaremos con el siguiente comando:
 pip install dash scipy numpy sympy
 ```
 
+```shell
+pip install -r requirements.txt
+```
+
 ## Ejecución
 
 Desde la carpeta del projecto, ejecutaremos el servidor mediante:

@@ -48,31 +48,31 @@ def SIARS (populations, t, Lambda, mu, lambda1, xi, beta, p, alpha, delta, psi, 
     fig[4].add_trace(go.Scatter(x=t, y=R, mode='lines', name='Recuperados', line=dict(color='purple')))
 
     fig[0].update_layout(
-        title='Evolución de la Población en el Modelo SIARS',
+        title='Evolución de la Población Suceptible',
         xaxis_title='Tiempo (años)',
         yaxis_title='Número de Suceptibles',
         template='plotly_white'
     )
     fig[1].update_layout(
-        title='Evolución de la Población en el Modelo SIARS',
+        title='Evolución de la Población Expuesta',
         xaxis_title='Tiempo (años)',
         yaxis_title='Número de Expuesto',
         template='plotly_white'
     )
     fig[2].update_layout(
-        title='Evolución de la Población en el Modelo SIARS',
+        title='Evolución de la Población Infectada',
         xaxis_title='Tiempo (años)',
         yaxis_title='Número de Infectados',
         template='plotly_white'
     )
     fig[3].update_layout(
-        title='Evolución de la Población en el Modelo SIARS',
+        title='Evolución de la Población Asistomatica',
         xaxis_title='Tiempo (años)',
         yaxis_title='Número de Asistomaticos',
         template='plotly_white'
     )
     fig[4].update_layout(
-        title='Evolución de la Población en el Modelo SIARS',
+        title='Evolución de la Población Recuperada',
         xaxis_title='Tiempo (años)',
         yaxis_title='Número de Recuperados',
         template='plotly_white'

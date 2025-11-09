@@ -9,25 +9,7 @@ dash.register_page(
 )
 
 layout = html.Div(className="space-y-9", children=[
-    html.Div(className="flex flex-col gap-9 items-center", children=[
-        html.Div(className="font-semibold text-2xl", children="Modelo virus informático"),
-        html.Div(
-            className='flex gap-6', children=[
-                # Imagen 1
-                html.Img(
-                    className="w-[25rem]",
-                    src='/assets/model.png', 
-                    alt='Imagen de modelo', 
-                ),
-                # Imagen 2
-                html.Img(
-                    className="w-[25rem]",
-                    src='/assets/model1.png', 
-                    alt='Imagen de modelo', 
-                )
-            ]
-        ),
-    ]),
+    
     html.Div(className="flex flex-col gap-6", children=[
         html.Div(className="space-y-3", children=[
             html.H2(className="font-semibold text-center text-2xl", children='Parámetros'),
